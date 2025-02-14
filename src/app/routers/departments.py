@@ -1,3 +1,5 @@
+from app.models.departments import Departments
+
 from fastapi import APIRouter, Request
 
 router = APIRouter(
@@ -9,5 +11,5 @@ router = APIRouter(
 )
 
 @router.post("/insert")
-def insert_rows(request: Request):
+def insert_rows(data: Departments, request: Request):
     return "Inserting departments table..."
