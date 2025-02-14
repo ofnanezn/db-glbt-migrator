@@ -13,4 +13,4 @@ router = APIRouter(
 
 @router.post("/insert")
 def insert_rows(data: Departments, request: Request):
-    return Controller(request).insert_rows(data)
+    return Controller.insert_rows(data)

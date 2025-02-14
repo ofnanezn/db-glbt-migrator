@@ -1,11 +1,10 @@
+from app.service.hired_employees import Service
+
 from fastapi import HTTPException, Request
 from abc import ABC
 import json
 
 class Controller(ABC):
-    def __init__(self, request: Request):
-        self.request = request
-
     def insert_rows(self, body):
         body = json.loads(body.json())
         
@@ -13,8 +12,6 @@ class Controller(ABC):
             raise HTTPException(status_code=400, detail="Rows should not be empty.")
             
         try:
-            return {
-                "message": "Rows inserted successfully"
-            }
+            return Service.insert_rows(body["rows"])
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error inserting rows: {e}")
