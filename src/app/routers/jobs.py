@@ -1,3 +1,4 @@
+from app.controller.jobs import Controller
 from app.models.jobs import Jobs
 
 from fastapi import APIRouter, Request
@@ -12,4 +13,4 @@ router = APIRouter(
 
 @router.post("/insert")
 def insert_rows(data: Jobs, request: Request):
-    return "Inserting jobs table..."
+    return Controller(request).insert_rows(data)
