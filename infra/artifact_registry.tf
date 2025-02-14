@@ -6,8 +6,8 @@ resource "google_artifact_registry_repository" "migration-repo" {
 }
 
 resource "google_artifact_registry_repository_iam_member" "default-sa-writer" {
-  location = var.region
+  location   = var.region
   repository = google_artifact_registry_repository.migration-repo.name
-  role = "roles/artifactregistry.writer"
-  member = "serviceAccount:${module.project.service_account_email}"
+  role       = "roles/artifactregistry.writer"
+  member     = "serviceAccount:${module.project.service_account_email}"
 }
