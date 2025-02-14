@@ -1,15 +1,11 @@
 from app.common.utils import df_to_bq
 
-from datetime import datetime
-import pandas as pd
-import os
-
 
 class Service():
     def insert_rows(data):
         try:
-            df = df_to_bq(data, "hired_employees")
-
+            df, table_name = df_to_bq(data, "hired_employees")
+            merge_staging_into_target("hired_employees", table_name_stg)
             return {
                 "message": "Rows inserted successfully.",
                 "count": len(df),

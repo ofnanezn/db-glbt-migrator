@@ -5,7 +5,7 @@ from abc import ABC
 import json
 
 class Controller(ABC):
-    def insert_rows(self, body):
+    def insert_rows(body):
         body = json.loads(body.json())
         
         if not len(body["rows"]):
