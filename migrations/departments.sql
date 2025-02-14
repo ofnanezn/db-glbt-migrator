@@ -9,6 +9,7 @@ OPTIONS (
 
 LOAD DATA OVERWRITE `glbt-challenge-migrations.bq_glbt_migrator_tgt.dm_departments`
 (ID INT64, DEPARTMENT STRING)
+CLUSTER BY DEPARTMENT
 FROM FILES (
   format = 'CSV',
   field_delimiter = ',',
