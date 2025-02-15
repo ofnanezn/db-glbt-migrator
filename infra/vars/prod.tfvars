@@ -6,4 +6,5 @@ activate_apis = [
     "bigquery.googleapis.com",
     "compute.googleapis.com",
     "artifactregistry.googleapis.com",
+    "run.googleapis.com",
 ]
