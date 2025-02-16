@@ -1,4 +1,4 @@
-from app.common.utils import df_to_bq, merge_staging_into_target
+from app.common.utils import df_to_bq, merge_staging_into_target, backup_into_gcs
 
 
 class Service():
