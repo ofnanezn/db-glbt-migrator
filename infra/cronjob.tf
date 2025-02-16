@@ -1,6 +1,6 @@
 # Create a backup cronjob for each table
 resource "google_cloud_scheduler_job" "table-backup" {
-  for_each = toset(var.tables)
+  for_each         = toset(var.tables)
   name             = "${each.value}-backup-scheduler"
   description      = "Cronjob to backup ${each.value}"
   schedule         = "0 0 * * *"
