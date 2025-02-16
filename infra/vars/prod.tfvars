@@ -7,4 +7,5 @@ activate_apis = [
     "compute.googleapis.com",
     "artifactregistry.googleapis.com",
     "run.googleapis.com",
+    "cloudscheduler.googleapis.com",
 ]

@@ -44,3 +44,26 @@ def merge_staging_into_target(table_type, stg_table):
         return job.result()
     except Exception as e:
         raise Exception(f"Error while merging data into target table. {e}")
+
+
+def backup_into_gcs(table_type):
+    try:
+        bucket_path = f"gs://{os.getenv('BUCKET_NAME')}/backup/{table_type}.avro"
+        table_id = f"{os.getenv('DATASET_ID')}_tgt.{tables[table_type]['table_name']}"
+
+        client = bigquery.Client(project=os.getenv("PROJECT_ID"))
+
+        job_config = bigquery.ExtractJobConfig()
+        job_config.destination_format = bigquery.job.DestinationFormat.AVRO
+        job_config.compression = bigquery.job.Compression.SNAPPY
+
+        extract_job = client.extract_table(
+            table_id,
+            bucket_path,
+            location="us-central1",
+            job_config=job_config,
+        )   
+
+        return extract_job.result()
+    except Exception as e:
+        raise Exception(f"Error while creating backup. {e}")

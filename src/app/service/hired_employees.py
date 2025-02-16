@@ -13,3 +13,11 @@ class Service():
         except Exception as e:
             raise Exception(str(e))
         
+    def backup():
+        try:
+            backup_into_gcs("hired_employees")
+            return {
+                "message": "Table hired_employees backup created successfully.",
+            }
+        except Exception as e:
+            raise Exception(str(e))

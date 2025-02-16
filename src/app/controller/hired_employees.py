@@ -15,3 +15,9 @@ class Controller(ABC):
             return Service.insert_rows(body["rows"])
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error inserting rows: {e}")
+
+    def backup():            
+        try:
+            return Service.backup()
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Error in backup process: {e}")
