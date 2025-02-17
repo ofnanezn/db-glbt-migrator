@@ -99,3 +99,17 @@ def restore_from_gcs(table_type):
         return import_job.result()
     except Exception as e:
         raise Exception(f"Error while restoring table. {e}")
+
+
+def create_metric_report(report_number):
+    try:
+        client = bigquery.Client(project=os.getenv("PROJECT_ID"))
+
+        with open(f"sql/{report_number}.sql", "r") as f:
+            query = f.read()
+
+        job = client.query(query=query)
+        return job.to_dataframe().to_dict(orient="records")       
+    
+    except Exception as e:
+        raise Exception(f"Error while creating report. {e}")
