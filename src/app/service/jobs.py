@@ -1,4 +1,9 @@
-from app.common.utils import df_to_bq, merge_staging_into_target, backup_into_gcs
+from app.common.utils import (
+    df_to_bq, 
+    merge_staging_into_target, 
+    backup_into_gcs, 
+    restore_from_gcs
+)
 
 
 class Service():
@@ -18,6 +23,15 @@ class Service():
             backup_into_gcs("jobs")
             return {
                 "message": "Table jobs backup created successfully.",
+            }
+        except Exception as e:
+            raise Exception(str(e))
+
+    def restore():
+        try:
+            restore_from_gcs("jobs")
+            return {
+                "message": "Table jobs restored successfully.",
             }
         except Exception as e:
             raise Exception(str(e))

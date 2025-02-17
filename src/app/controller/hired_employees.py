@@ -21,3 +21,10 @@ class Controller(ABC):
             return Service.backup()
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error in backup process: {e}")
+
+    def restore():            
+        try:
+            return Service.restore()
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Error in restore process: {e}")
+

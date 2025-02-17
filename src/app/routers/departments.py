@@ -18,3 +18,7 @@ def insert_rows(data: Departments):
 @router.post("/backup")
 def backup():
     return Controller.backup()
+
+@router.post("/restore")
+def restore():
+    return Controller.restore()
