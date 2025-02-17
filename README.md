@@ -24,6 +24,8 @@ export BILLING_ACCOUNT="<YOUR_GCP_BILLING_ACCOUNT>"
 export PROJECT_ID="glbt-challenge-migrations"
 export DATASET_ID="bq_glbt_migrator"
 export TAG_NAME="<TAG_VERSION>"   # e.g. v0.0.1
+export SERVICE_NAME="bq-glbt-migrator"
+export DEFAULT_SA="${SERVICE_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
 ```
 * Run Terraform commands to create resources:
 ```
@@ -40,9 +42,14 @@ export BUCKET_NAME="<YOUR_BUCKET_NAME>"
 * Upload first Docker image version into GCP Artifactory (`scripts/push_docker_version.sh`).
 * Deploy first version from the API in Cloud Run (`scripts/deploy_cloud_run.sh`).
 
-**NOTE:**  Project ID and Dataset ID variable can be changed, but they also need to be modified into Terraform variables file.
+**NOTE:**  Project ID, service name and dataset ID variables can be changed, but they also need to be modified into Terraform variables file.
 
-## API endpoints
+## API details
+
+### API URL
+URL: `https://bq-glbt-migrator-508891629639.us-central1.run.app`
+
+### API endpoints
 * `/<table_name>/insert`: Insert the given rows into **<table_name>**
     * **body:**
       ```
