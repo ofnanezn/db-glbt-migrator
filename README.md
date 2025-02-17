@@ -3,6 +3,9 @@
 ## Introduction
 This repository contains the solution to the code challenge related to building an API that executes some data related processes.
 
+### Architecture
+![Architecture](diagrams/architecture.png)
+
 ### Project structure
 The repository is divided into this set of folders:
 
