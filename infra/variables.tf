@@ -13,6 +13,11 @@ variable "service_name" {
   description = "Name of service that will be created"
 }
 
+variable "tables" {
+  type        = list(string)
+  description = "Challenge tables"
+}
+
 variable "activate_apis" {
   type        = list(string)
   description = "APIs that will be enabled in the project"

@@ -14,3 +14,11 @@ router = APIRouter(
 @router.post("/insert")
 def insert_rows(data: HiredEmployees, request: Request):
     return Controller.insert_rows(data)
+
+@router.post("/backup")
+def backup():
+    return Controller.backup()
+
+@router.post("/restore")
+def restore():
+    return Controller.restore()
